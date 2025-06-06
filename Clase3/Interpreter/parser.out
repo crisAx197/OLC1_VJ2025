@@ -1,0 +1,101 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expresion
+Rule 1     expresion -> NUMERO
+Rule 2     expresion -> expresion MAS expresion
+Rule 3     expresion -> expresion MENOS expresion
+
+Terminals, with rules where they appear
+
+MAS                  : 2
+MENOS                : 3
+NUMERO               : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+expresion            : 2 2 3 3 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expresion
+    (1) expresion -> . NUMERO
+    (2) expresion -> . expresion MAS expresion
+    (3) expresion -> . expresion MENOS expresion
+
+    NUMERO          shift and go to state 2
+
+    expresion                      shift and go to state 1
+
+state 1
+
+    (0) S' -> expresion .
+    (2) expresion -> expresion . MAS expresion
+    (3) expresion -> expresion . MENOS expresion
+
+    MAS             shift and go to state 3
+    MENOS           shift and go to state 4
+
+
+state 2
+
+    (1) expresion -> NUMERO .
+
+    MAS             reduce using rule 1 (expresion -> NUMERO .)
+    MENOS           reduce using rule 1 (expresion -> NUMERO .)
+    $end            reduce using rule 1 (expresion -> NUMERO .)
+
+
+state 3
+
+    (2) expresion -> expresion MAS . expresion
+    (1) expresion -> . NUMERO
+    (2) expresion -> . expresion MAS expresion
+    (3) expresion -> . expresion MENOS expresion
+
+    NUMERO          shift and go to state 2
+
+    expresion                      shift and go to state 5
+
+state 4
+
+    (3) expresion -> expresion MENOS . expresion
+    (1) expresion -> . NUMERO
+    (2) expresion -> . expresion MAS expresion
+    (3) expresion -> . expresion MENOS expresion
+
+    NUMERO          shift and go to state 2
+
+    expresion                      shift and go to state 6
+
+state 5
+
+    (2) expresion -> expresion MAS expresion .
+    (2) expresion -> expresion . MAS expresion
+    (3) expresion -> expresion . MENOS expresion
+
+    MAS             reduce using rule 2 (expresion -> expresion MAS expresion .)
+    MENOS           reduce using rule 2 (expresion -> expresion MAS expresion .)
+    $end            reduce using rule 2 (expresion -> expresion MAS expresion .)
+
+  ! MAS             [ shift and go to state 3 ]
+  ! MENOS           [ shift and go to state 4 ]
+
+
+state 6
+
+    (3) expresion -> expresion MENOS expresion .
+    (2) expresion -> expresion . MAS expresion
+    (3) expresion -> expresion . MENOS expresion
+
+    MAS             reduce using rule 3 (expresion -> expresion MENOS expresion .)
+    MENOS           reduce using rule 3 (expresion -> expresion MENOS expresion .)
+    $end            reduce using rule 3 (expresion -> expresion MENOS expresion .)
+
+  ! MAS             [ shift and go to state 3 ]
+  ! MENOS           [ shift and go to state 4 ]
+
