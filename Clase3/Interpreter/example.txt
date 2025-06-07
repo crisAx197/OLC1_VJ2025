@@ -1,0 +1,41 @@
+int i = 5;          // Agregar i a la tabla de simbolos con el valor 5 y el tipo int
+int b = 1;          // Agregar b a la tabla de simbolos con el valor 1 y el tipo int
+
+while (i > 0) {    // 5 > 0 == true
+    b++;           // asignacion b = b + 1 => b = 2;
+    println(b);    // Se añade 2 a la respuesta total
+    i--;           // asignacion i = i - 1 => i = 4
+}
+
+while (i > 0) {    // 4 > 0 == true
+    b++;           // asignacion b = b + 1 => b = 3;
+    println(b);    // Se añade 3 a la respuesta total
+    i--;           // asignacion i = i - 1 => i = 3
+}
+
+while (i > 0) {    // 3 > 0 == true
+    b++;           // asignacion b = b + 1 => b = 4;
+    println(b);    // Se añade 4 a la respuesta total
+    i--;           // asignacion i = i - 1 => i = 2
+}
+
+while (i > 0) {    // 3 > 0 == true
+    b++;           // asignacion b = b + 1 => b = 5;
+    println(b);    // Se añade 5 a la respuesta total
+    i--;           // asignacion i = i - 1 => i = 1
+}
+
+while (i > 0) {    // 1 > 0 == true
+    b++;           // asignacion b = b + 1 => b = 6;
+    println(b);    // Se añade 6 a la respuesta total
+    i--;           // asignacion i = i - 1 => i = 0
+}
+
+while (i > 0) {    // 0 > 0 == false
+}
+
+2
+3
+4
+5
+6
