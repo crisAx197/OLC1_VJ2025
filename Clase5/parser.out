@@ -1,0 +1,358 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> init
+Rule 1     init -> instrucciones
+Rule 2     instrucciones -> instrucciones instruccion
+Rule 3     instrucciones -> instruccion
+Rule 4     instruccion -> evaluacion
+Rule 5     instruccion -> asignacion
+Rule 6     instruccion -> declaracion
+Rule 7     asignacion -> ID IGUAL expresion PTC
+Rule 8     declaracion -> INT ID IGUAL expresion PTC
+Rule 9     evaluacion -> REVAL CORIZQ expresion CORDER PTC
+Rule 10    expresion -> NUMERO
+Rule 11    expresion -> ID
+Rule 12    expresion -> expresion MAS expresion
+Rule 13    expresion -> expresion MENOS expresion
+
+Terminals, with rules where they appear
+
+CORDER               : 9
+CORIZQ               : 9
+ID                   : 7 8 11
+IGUAL                : 7 8
+INT                  : 8
+MAS                  : 12
+MENOS                : 13
+NUMERO               : 10
+PTC                  : 7 8 9
+REVAL                : 9
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 5
+declaracion          : 6
+evaluacion           : 4
+expresion            : 7 8 9 12 12 13 13
+init                 : 0
+instruccion          : 2 3
+instrucciones        : 1 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . init
+    (1) init -> . instrucciones
+    (2) instrucciones -> . instrucciones instruccion
+    (3) instrucciones -> . instruccion
+    (4) instruccion -> . evaluacion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . declaracion
+    (9) evaluacion -> . REVAL CORIZQ expresion CORDER PTC
+    (7) asignacion -> . ID IGUAL expresion PTC
+    (8) declaracion -> . INT ID IGUAL expresion PTC
+
+    REVAL           shift and go to state 7
+    ID              shift and go to state 8
+    INT             shift and go to state 9
+
+    init                           shift and go to state 1
+    instrucciones                  shift and go to state 2
+    instruccion                    shift and go to state 3
+    evaluacion                     shift and go to state 4
+    asignacion                     shift and go to state 5
+    declaracion                    shift and go to state 6
+
+state 1
+
+    (0) S' -> init .
+
+
+
+state 2
+
+    (1) init -> instrucciones .
+    (2) instrucciones -> instrucciones . instruccion
+    (4) instruccion -> . evaluacion
+    (5) instruccion -> . asignacion
+    (6) instruccion -> . declaracion
+    (9) evaluacion -> . REVAL CORIZQ expresion CORDER PTC
+    (7) asignacion -> . ID IGUAL expresion PTC
+    (8) declaracion -> . INT ID IGUAL expresion PTC
+
+    $end            reduce using rule 1 (init -> instrucciones .)
+    REVAL           shift and go to state 7
+    ID              shift and go to state 8
+    INT             shift and go to state 9
+
+    instruccion                    shift and go to state 10
+    evaluacion                     shift and go to state 4
+    asignacion                     shift and go to state 5
+    declaracion                    shift and go to state 6
+
+state 3
+
+    (3) instrucciones -> instruccion .
+
+    REVAL           reduce using rule 3 (instrucciones -> instruccion .)
+    ID              reduce using rule 3 (instrucciones -> instruccion .)
+    INT             reduce using rule 3 (instrucciones -> instruccion .)
+    $end            reduce using rule 3 (instrucciones -> instruccion .)
+
+
+state 4
+
+    (4) instruccion -> evaluacion .
+
+    REVAL           reduce using rule 4 (instruccion -> evaluacion .)
+    ID              reduce using rule 4 (instruccion -> evaluacion .)
+    INT             reduce using rule 4 (instruccion -> evaluacion .)
+    $end            reduce using rule 4 (instruccion -> evaluacion .)
+
+
+state 5
+
+    (5) instruccion -> asignacion .
+
+    REVAL           reduce using rule 5 (instruccion -> asignacion .)
+    ID              reduce using rule 5 (instruccion -> asignacion .)
+    INT             reduce using rule 5 (instruccion -> asignacion .)
+    $end            reduce using rule 5 (instruccion -> asignacion .)
+
+
+state 6
+
+    (6) instruccion -> declaracion .
+
+    REVAL           reduce using rule 6 (instruccion -> declaracion .)
+    ID              reduce using rule 6 (instruccion -> declaracion .)
+    INT             reduce using rule 6 (instruccion -> declaracion .)
+    $end            reduce using rule 6 (instruccion -> declaracion .)
+
+
+state 7
+
+    (9) evaluacion -> REVAL . CORIZQ expresion CORDER PTC
+
+    CORIZQ          shift and go to state 11
+
+
+state 8
+
+    (7) asignacion -> ID . IGUAL expresion PTC
+
+    IGUAL           shift and go to state 12
+
+
+state 9
+
+    (8) declaracion -> INT . ID IGUAL expresion PTC
+
+    ID              shift and go to state 13
+
+
+state 10
+
+    (2) instrucciones -> instrucciones instruccion .
+
+    REVAL           reduce using rule 2 (instrucciones -> instrucciones instruccion .)
+    ID              reduce using rule 2 (instrucciones -> instrucciones instruccion .)
+    INT             reduce using rule 2 (instrucciones -> instrucciones instruccion .)
+    $end            reduce using rule 2 (instrucciones -> instrucciones instruccion .)
+
+
+state 11
+
+    (9) evaluacion -> REVAL CORIZQ . expresion CORDER PTC
+    (10) expresion -> . NUMERO
+    (11) expresion -> . ID
+    (12) expresion -> . expresion MAS expresion
+    (13) expresion -> . expresion MENOS expresion
+
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 14
+
+state 12
+
+    (7) asignacion -> ID IGUAL . expresion PTC
+    (10) expresion -> . NUMERO
+    (11) expresion -> . ID
+    (12) expresion -> . expresion MAS expresion
+    (13) expresion -> . expresion MENOS expresion
+
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 17
+
+state 13
+
+    (8) declaracion -> INT ID . IGUAL expresion PTC
+
+    IGUAL           shift and go to state 18
+
+
+state 14
+
+    (9) evaluacion -> REVAL CORIZQ expresion . CORDER PTC
+    (12) expresion -> expresion . MAS expresion
+    (13) expresion -> expresion . MENOS expresion
+
+    CORDER          shift and go to state 19
+    MAS             shift and go to state 20
+    MENOS           shift and go to state 21
+
+
+state 15
+
+    (10) expresion -> NUMERO .
+
+    CORDER          reduce using rule 10 (expresion -> NUMERO .)
+    MAS             reduce using rule 10 (expresion -> NUMERO .)
+    MENOS           reduce using rule 10 (expresion -> NUMERO .)
+    PTC             reduce using rule 10 (expresion -> NUMERO .)
+
+
+state 16
+
+    (11) expresion -> ID .
+
+    CORDER          reduce using rule 11 (expresion -> ID .)
+    MAS             reduce using rule 11 (expresion -> ID .)
+    MENOS           reduce using rule 11 (expresion -> ID .)
+    PTC             reduce using rule 11 (expresion -> ID .)
+
+
+state 17
+
+    (7) asignacion -> ID IGUAL expresion . PTC
+    (12) expresion -> expresion . MAS expresion
+    (13) expresion -> expresion . MENOS expresion
+
+    PTC             shift and go to state 22
+    MAS             shift and go to state 20
+    MENOS           shift and go to state 21
+
+
+state 18
+
+    (8) declaracion -> INT ID IGUAL . expresion PTC
+    (10) expresion -> . NUMERO
+    (11) expresion -> . ID
+    (12) expresion -> . expresion MAS expresion
+    (13) expresion -> . expresion MENOS expresion
+
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 23
+
+state 19
+
+    (9) evaluacion -> REVAL CORIZQ expresion CORDER . PTC
+
+    PTC             shift and go to state 24
+
+
+state 20
+
+    (12) expresion -> expresion MAS . expresion
+    (10) expresion -> . NUMERO
+    (11) expresion -> . ID
+    (12) expresion -> . expresion MAS expresion
+    (13) expresion -> . expresion MENOS expresion
+
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 25
+
+state 21
+
+    (13) expresion -> expresion MENOS . expresion
+    (10) expresion -> . NUMERO
+    (11) expresion -> . ID
+    (12) expresion -> . expresion MAS expresion
+    (13) expresion -> . expresion MENOS expresion
+
+    NUMERO          shift and go to state 15
+    ID              shift and go to state 16
+
+    expresion                      shift and go to state 26
+
+state 22
+
+    (7) asignacion -> ID IGUAL expresion PTC .
+
+    REVAL           reduce using rule 7 (asignacion -> ID IGUAL expresion PTC .)
+    ID              reduce using rule 7 (asignacion -> ID IGUAL expresion PTC .)
+    INT             reduce using rule 7 (asignacion -> ID IGUAL expresion PTC .)
+    $end            reduce using rule 7 (asignacion -> ID IGUAL expresion PTC .)
+
+
+state 23
+
+    (8) declaracion -> INT ID IGUAL expresion . PTC
+    (12) expresion -> expresion . MAS expresion
+    (13) expresion -> expresion . MENOS expresion
+
+    PTC             shift and go to state 27
+    MAS             shift and go to state 20
+    MENOS           shift and go to state 21
+
+
+state 24
+
+    (9) evaluacion -> REVAL CORIZQ expresion CORDER PTC .
+
+    REVAL           reduce using rule 9 (evaluacion -> REVAL CORIZQ expresion CORDER PTC .)
+    ID              reduce using rule 9 (evaluacion -> REVAL CORIZQ expresion CORDER PTC .)
+    INT             reduce using rule 9 (evaluacion -> REVAL CORIZQ expresion CORDER PTC .)
+    $end            reduce using rule 9 (evaluacion -> REVAL CORIZQ expresion CORDER PTC .)
+
+
+state 25
+
+    (12) expresion -> expresion MAS expresion .
+    (12) expresion -> expresion . MAS expresion
+    (13) expresion -> expresion . MENOS expresion
+
+    CORDER          reduce using rule 12 (expresion -> expresion MAS expresion .)
+    MAS             reduce using rule 12 (expresion -> expresion MAS expresion .)
+    MENOS           reduce using rule 12 (expresion -> expresion MAS expresion .)
+    PTC             reduce using rule 12 (expresion -> expresion MAS expresion .)
+
+  ! MAS             [ shift and go to state 20 ]
+  ! MENOS           [ shift and go to state 21 ]
+
+
+state 26
+
+    (13) expresion -> expresion MENOS expresion .
+    (12) expresion -> expresion . MAS expresion
+    (13) expresion -> expresion . MENOS expresion
+
+    CORDER          reduce using rule 13 (expresion -> expresion MENOS expresion .)
+    MAS             reduce using rule 13 (expresion -> expresion MENOS expresion .)
+    MENOS           reduce using rule 13 (expresion -> expresion MENOS expresion .)
+    PTC             reduce using rule 13 (expresion -> expresion MENOS expresion .)
+
+  ! MAS             [ shift and go to state 20 ]
+  ! MENOS           [ shift and go to state 21 ]
+
+
+state 27
+
+    (8) declaracion -> INT ID IGUAL expresion PTC .
+
+    REVAL           reduce using rule 8 (declaracion -> INT ID IGUAL expresion PTC .)
+    ID              reduce using rule 8 (declaracion -> INT ID IGUAL expresion PTC .)
+    INT             reduce using rule 8 (declaracion -> INT ID IGUAL expresion PTC .)
+    $end            reduce using rule 8 (declaracion -> INT ID IGUAL expresion PTC .)
+
