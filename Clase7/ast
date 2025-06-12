@@ -1,0 +1,14 @@
+digraph AST {
+	node1 [label=Suma color=black fillcolor=lightgreen style=filled]
+	node2 [label="Numero
+3" color=black fillcolor=lightblue style=filled]
+	node3 [label=Suma color=black fillcolor=lightgreen style=filled]
+	node4 [label="Numero
+5" color=black fillcolor=lightblue style=filled]
+	node5 [label="Numero
+2" color=black fillcolor=lightblue style=filled]
+	node3 -> node4
+	node3 -> node5
+	node1 -> node2
+	node1 -> node3
+}
